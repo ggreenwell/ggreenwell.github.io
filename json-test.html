@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+<body>
+<input type="text" id="name_input">
+<input type="button" id="save" value="save" onclick="saveData();">
+<hr>
+<input type="file" onchange="readFile(this)">
+<div id="submit_name">
+</div>
+<script>
+function readFile(input) {
+  let file = input.files[0];
+
+  let reader = new FileReader();
+
+  reader.readAsText(file);
+
+  reader.onload = function() {
+	const obj = JSON.parse(reader.result);
+	document.getElementById("submit_name").innerHTML = obj.submit_name;
+  };
+
+  reader.onerror = function() {
+    console.log(reader.error);
+  };
+}
+
+function saveData()
+{
+    var data = '{ "submit_name" : "' + document.getElementById("name_input").value + '"}';
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(data); //JSON.stringify(document.getElementById("name_input"exportObj));
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", "test" + ".json");
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+}
+
+</script>
+</body>
+</html>
