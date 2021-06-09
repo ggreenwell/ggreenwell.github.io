@@ -346,6 +346,46 @@
 		color: #911;
 		text-align: center;
 	}
+
+	.header-label {
+		font: 12px Georgia, serif;
+		font-weight: bold;
+		display: inline-block;
+		color: #119;
+		width: 150px;
+		text-align: right;
+		margin-right: 5px;
+	}
+
+	#ticket-number-static {
+		font: 16px Georgia, serif;
+		display: inline-block;
+		color: #119;
+		width: 25px;
+		text-align: right;
+		margin-right: 5px;
+	}
+
+	.load-proposal-label {
+		font: 10px Georgia, serif;
+		color: #911;
+	}
+
+	.save-proposal-label {
+		font: 10px Georgia, serif;
+		color: #911;
+	}
+
+	.validity-days-label {
+		font: 10px Georgia, serif;
+		color: #911;
+	}
+
+	#validity-days-input {
+		font: 12px Courier New, monospace;
+		width: 50px;
+		text-align: right;
+	}
 }
 
 </style>
@@ -353,6 +393,16 @@
 	<body>
 		<div id="page-wrap">
 			<div id="header">
+				<div id="load" style="text-align:center;">
+						  <label class="load-proposal-label" for="load">Use this feature to populate proposal with previously saved content.  Choose file and then hit <b>Load Proposal</b>.</label><br><br>
+					<input type="file" id="load-file-input">
+					<input type="button" style="width:125px;" id="load" value="Load Proposal" onclick="loadData();">
+				</div>
+				<div id="transition">
+					<br> <hr> <br>
+				</div>
+				<div id="ticket-date"><label class="header-label" for="ticket-date-input">Ticket Date:</label><input id="ticket-date-input" class="header-input" type="date"></div>
+				<div id="ticket-number"><label class="header-label" for="ticket-number-input">Ticket Number:</label><input id="ticket-number-static" class="header-input" type="text" value="30-" disabled><input id="ticket-number-input" class="header-input" type="number"></div>
 			</div>
 			<div id="main-content">
 				<div id="submitted-header">
@@ -366,11 +416,13 @@
 					<div id="submitted-zip"><label class="submitted-label" for="submitted-zip-input">Zip:</label><input id="submitted-zip-input" class="submitted-input" type="text"></div>
 					<div id="submitted-telephone"><label class="submitted-label" for="submitted-telephone-input">Telephone:</label><input id="submitted-telephone-input" class="submitted-input" type="text"></div>
 				</div>
-				<div id="transition">
+				<div id="transition" style="text-align:center;">
 					<br>
 					<hr>
+					<br>
 					<input type="checkbox" id="copy-address" onclick="copy_address();">
-					<label for="copy_address">Use Same Address</label><br>
+					<label for="copy-address">Use Same Address As Above</label><br>
+					<br>
 					<hr>
 					<br>
 				</div>
@@ -405,7 +457,7 @@
 				<div id="cost">
 					<div id="total-cost">
 						<label class="cost-label" for="cost-input">Perform the work described above and supply all required materials for the sum of $</label>
-						<input id="cost-input" class="cost-input" type="number" inpuutmode="numeric" oninput="updateAmounts();">
+						<input id="cost-input" class="cost-input" type="number" oninput="updateAmounts();">
 					</div>
 				</div>
 				<div id="transition">
@@ -436,21 +488,25 @@
 				</div>
 				<div id="dates">
 					<label class="payment-start-label" for="payment-start-input">The approximate starting date is </label>
-					<input id="starting_date" type="date">
+					<input id="starting-date-input" type="date">
 					<label class="payment-start-label" for="payment-start-input">, and the approximate substantial completion date is </label>
-					<input id="completion_date" type="date">
+					<input id="completion-date-input" type="date">
+				</div>
+				<div id="validity">
+					<label class="validity-days-label" for="validity-days-input">The proposal may be withdrawn if not accepted in </label>
+					<input id="validity-days-input" type="numeric">
+					<label class="validity-days-label" for="validity-days-input"> days.</label>
+				</div>
+				<div id="transition">
+					<br> <hr> <br>
+				</div>
+				<div id="save" style="text-align:center">
+					<label class="save-proposal-label" for="save">Use this button to save the contents of the current proposal.</label><br><br>
+					<input type="button" style="width:125px;" id="save" value="Save Proposal" onclick="saveData();">
 				</div>
 			</div>
-<input id="thefile" type="file">
-<input type="button" onclick="alertFilename();" value="Alert">
 		</div>
-
 		<script>
-			function alertFilename()
-			{
-				var thefile = document.getElementById('thefile');
-				alert(thefile.value);
-			}
 			function updateAmounts()
 			{
 				let cost = parseFloat(document.getElementById('cost-input').value) || 0;
@@ -500,6 +556,92 @@
 					document.getElementById('work-at-telephone-input').value = '';
 				}
 			}
+
+			function loadData() {
+				let input = document.getElementById("load-file-input");
+  				let file = input.files[0];
+				let reader = new FileReader();
+
+				reader.readAsText(file);
+
+				reader.onload = function() {
+					const obj = JSON.parse(reader.result);
+					document.getElementById("ticket-date-input").value = obj.ticketDate;
+					document.getElementById("ticket-number-input").value = obj.ticketNumber;
+					document.getElementById("submitted-name-input").value = obj.submittedName;
+					document.getElementById("submitted-street-input").value = obj.submittedStreet;
+					document.getElementById("submitted-city-input").value = obj.submittedCity;
+					document.getElementById("submitted-state-input").value = obj.submittedState;
+					document.getElementById("submitted-zip-input").value = obj.submittedZip;
+					document.getElementById("submitted-telephone-input").value = obj.submittedTelephone;
+					document.getElementById("work-at-name-input").value = obj.workAtName;
+					document.getElementById("work-at-street-input").value = obj.workAtStreet;
+					document.getElementById("work-at-city-input").value = obj.workAtCity;
+					document.getElementById("work-at-state-input").value = obj.workAtState;
+					document.getElementById("work-at-zip-input").value = obj.workAtZip;
+					document.getElementById("work-at-telephone-input").value = obj.workAtTelephone;
+					document.getElementById("proposal-details-input").value = obj.proposalDetails;
+					document.getElementById("cost-input").value = obj.cost;
+					document.getElementById("payment-execution-input").value = obj.paymentExecution;
+					document.getElementById("payment-start-input").value = obj.paymentStart;
+					document.getElementById("starting-date-input").value = obj.startingDate;
+					document.getElementById("completion-date-input").value = obj.completionDate;
+					document.getElementById("validity-days-input").value = obj.validityDays;
+					updateAmounts();
+				};
+
+				reader.onerror = function() {
+					console.log(reader.error);
+				};
+			}
+
+			function saveData()
+			{
+				ticketDate = document.getElementById("ticket-date-input");
+				ticketNumber = document.getElementById("ticket-number-input");
+				submittedName = document.getElementById("submitted-name-input");
+
+				if((ticketDate.value.length == 0) || (ticketNumber.value.length == 0) || (submittedName.value.length == 0))
+				{
+					alert("Please populate Ticket Date, Ticket Number and Proposal Submitted To - Name to Save.");
+					return;
+				}
+				filename = ticketDate.value.replaceAll('-', '') + '-' + ticketNumber.value + '-' + submittedName.value.replaceAll(' ', '_');
+
+				var data = '{'
+				data += ' "ticketDate" : "' + document.getElementById("ticket-date-input").value + '",';
+				data += ' "ticketNumber" : "' + document.getElementById("ticket-number-input").value + '",';
+				data += ' "submittedName" : "' + document.getElementById("submitted-name-input").value + '",';
+				data += ' "submittedStreet" : "' + document.getElementById("submitted-street-input").value + '",';
+				data += ' "submittedCity" : "' + document.getElementById("submitted-city-input").value + '",';
+				data += ' "submittedState" : "' + document.getElementById("submitted-state-input").value + '",';
+				data += ' "submittedZip" : "' + document.getElementById("submitted-zip-input").value + '",';
+				data += ' "submittedTelephone" : "' + document.getElementById("submitted-telephone-input").value + '",';
+				data += ' "copyAddress" : "' + document.getElementById("copy-address").value + '",';
+				data += ' "workAtName" : "' + document.getElementById("work-at-name-input").value + '",';
+				data += ' "workAtStreet" : "' + document.getElementById("work-at-street-input").value + '",';
+				data += ' "workAtCity" : "' + document.getElementById("work-at-city-input").value + '",';
+				data += ' "workAtState" : "' + document.getElementById("work-at-state-input").value + '",';
+				data += ' "workAtZip" : "' + document.getElementById("work-at-zip-input").value + '",';
+				data += ' "workAtTelephone" : "' + document.getElementById("work-at-telephone-input").value + '",';
+				data += ' "proposalDetails" : "' + document.getElementById("proposal-details-input").value + '",';
+				data += ' "cost" : "' + document.getElementById("cost-input").value + '",';
+				data += ' "paymentExecution" : "' + document.getElementById("payment-execution-input").value + '",';
+				data += ' "paymentStart" : "' + document.getElementById("payment-start-input").value + '",';
+				data += ' "startingDate" : "' + document.getElementById("starting-date-input").value + '",';
+				data += ' "completionDate" : "' + document.getElementById("completion-date-input").value + '",';
+				data += ' "validityDays" : "' + document.getElementById("validity-days-input").value + '"';
+				data += '}';
+
+				var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(data); //JSON.stringify(document.getElementById("name_input"exportObj));
+				var downloadAnchorNode = document.createElement('a');
+				downloadAnchorNode.setAttribute("href",     dataStr);
+				downloadAnchorNode.setAttribute("download", filename + ".json");
+				document.body.appendChild(downloadAnchorNode); // required for firefox
+				downloadAnchorNode.click();
+				downloadAnchorNode.remove();
+			}
+
 		</script>
 	</body>
 </html>
