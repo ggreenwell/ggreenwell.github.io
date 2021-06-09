@@ -1,0 +1,497 @@
+<!DOCTYPE HTML>
+<html  lang="en-US">
+<head>
+<meta name="viewport" content="width=device-width">
+<meta charset='UTF-8'>
+<style>
+@page 
+{
+	size: 8.5in 11in portrait;  /* width height orientation */
+}
+
+@media print
+{
+	body {
+		font:10px Courier New, monospace;
+		margin: 0mm;
+	}
+
+	#page-wrap
+	{
+		background: #fff;
+		width: 8.5in;
+		margin: 0mm;
+	}
+
+	#page-wrap>div {
+		padding: 0px;
+		color: #000;
+	}
+
+	#header
+	{
+		height: 32mm;
+		width: 168mm;
+	}
+
+	#main-content
+	{
+		background: #fff;
+		border: 0px;
+		float: left;
+		width: 200mm;
+	}
+
+	#transition {
+		height: 0mm;
+		width: 0mm;
+		display: none !important; 
+	}
+
+	#work-at-header {
+		display: none !important; 
+	}
+
+	#submitted-header {
+		display: none !important; 
+	}
+
+	#proposal-details-header {
+		display: none !important; 
+	}
+
+	.submitted-label {
+		display: none !important; 
+	}
+
+	.work-at-label {
+		display: none !important; 
+	}
+
+	#submitted {
+		float: left;
+		margin-left: 5mm;
+		width: 85mm;
+	}
+
+	#submitted-name {
+		float: left;
+		margin-left: 10mm;
+		width: 74mm;
+		display: block;
+	}
+
+	#submitted-name-input {
+		width: 74mm;
+	}
+
+	#submitted-street {
+		float: left;
+		margin-left: 10mm;
+		width: 74mm;
+		display: block;
+	}
+
+	#submitted-street-input {
+		width: 74mm;
+	}
+
+	#submitted-city {
+		float: left;
+		margin-left: 10mm;
+		width: 74mm;
+		display: block;
+	}
+
+	#submitted-city-input {
+		width: 74mm;
+	}
+
+	#submitted-state {
+		float: left;
+		margin-left: 10mm;
+		width: 45mm;
+		display: block;
+	}
+
+	#submitted-state-input {
+		width: 45mm;
+	}
+
+	#submitted-zip {
+		float: left;
+		margin-left: 12mm;
+		width: 17mm;
+		display: block;
+	}
+
+	#submitted-zip-input {
+		width: 17mm;
+	}
+
+	#submitted-telephone {
+		float: left;
+		margin-left: 27mm;
+		width: 57mm;
+		display: block;
+	}
+
+	#submitted-telephone-input {
+		width: 57mm;
+	}
+
+	#work-at {
+		margin-left: 100mm; 
+	}
+
+	#work-at-name {
+		float: left;
+		margin-left: 10mm;
+		width: 74mm;
+		display: block;
+	}
+
+	#work-at-name-input {
+		width: 74mm;
+	}
+
+	#work-at-street {
+		float: left;
+		margin-left: 10mm;
+		width: 74mm;
+		display: block;
+	}
+
+	#work-at-street-input {
+		width: 74mm;
+	}
+
+	#work-at-city {
+		float: left;
+		margin-left: 10mm;
+		width: 74mm;
+		display: block;
+	}
+
+	#work-at-city-input {
+		width: 74mm;
+	}
+
+	#work-at-state {
+		float: left;
+		margin-left: 10mm;
+		width: 45mm;
+		display: block;
+	}
+
+	#work-at-state-input {
+		width: 45mm;
+	}
+
+	#work-at-zip {
+		float: left;
+		margin-left: 12mm;
+		width: 17mm;
+		display: block;
+	}
+
+	#work-at-zip-input {
+		width: 17mm;
+	}
+
+	#work-at-telephone {
+		float: left;
+		margin-left: 27mm;
+		width: 57mm;
+		display: block;
+	}
+
+	#work-at-telephone-input {
+		width: 57mm;
+	}
+}
+
+@media screen
+{
+	body {
+		font: 14px Georgia, serif;
+		background: #333;
+	}
+
+	#page-wrap {
+		width: 548px;
+		margin: 40px auto;
+		color: #fff
+	}
+
+	#page-wrap>div {
+		border: 1px solid #999;
+		padding: 20px;
+		margin-bottom: 5px;
+		color: #000;
+	}
+
+	#header {
+		background: #eee;
+	}
+
+	#main-content { 
+		background: #eee; 
+	}
+
+	* {
+		margin:0;
+		padding:0
+	}
+
+	.submitted-label {
+		width: 100px;
+		display: inline-block;
+		text-align: right;
+		padding-right: 5px;
+		font-weight: bold;
+	}
+
+	.work-at-label {
+		width: 100px;
+		display: inline-block;
+		text-align: right;
+		padding-right: 5px;
+		font-weight: bold;
+	}
+
+	.submitted-input {
+		font: 12px Courier New, monospace;
+		width: 300px;
+	}
+
+	.work-at-input {
+		font: 12px Courier New, monospace;
+		width: 300px;
+	}
+
+	#proposal-details {
+		text-align: center;
+	}
+
+	#cost {
+		text-align: center;
+	}
+
+	.cost-label {
+		font: 10px Georgia, serif;
+		font-style: italic;
+		color: #911;
+	}
+
+	.payment-execution-label {
+		font: 10px Georgia, serif;
+		font-style: italic;
+		color: #911;
+		margin-right: 5px;
+	}
+
+	.payment-start-label {
+		font: 10px Georgia, serif;
+		font-style: italic;
+		color: #911;
+		margin-right: 5px;
+	}
+
+	.payment-input {
+		font: 12px Courier New, monospace;
+		width: 50px;
+	}
+
+	#proposal-details-sub-header {
+		font: 10px Georgia, serif;
+		font-style: italic;
+	}
+
+	#proposal-details-input {
+		font: 12px Courier New, monospace;
+	}
+
+	#work-at-header {
+		font: 16px Georgia, serif;
+		font-weight: bold;
+		color: #911;
+		text-align: center;
+	}
+
+	#submitted-header {
+		font: 16px Georgia, serif;
+		font-weight: bold;
+		color: #911;
+		text-align: center;
+	}
+
+	#proposal-details-header {
+		font: 16px Georgia, serif;
+		font-weight: bold;
+		color: #911;
+		text-align: center;
+	}
+
+	#cost-header {
+		font: 16px Georgia, serif;
+		font-weight: bold;
+		color: #911;
+		text-align: center;
+	}
+
+	#payment-header {
+		font: 16px Georgia, serif;
+		font-weight: bold;
+		color: #911;
+		text-align: center;
+	}
+}
+
+</style>
+</head>
+	<body>
+		<div id="page-wrap">
+			<div id="header">
+			</div>
+			<div id="main-content">
+				<div id="submitted-header">
+					<span>Proposal Submitted To</span>
+				</div>
+				<div id="submitted">
+					<div id="submitted-name"><label class="submitted-label" for="submitted-name-input">Name:</label><input id="submitted-name-input" class="submitted-input" type="text"></div>
+					<div id="submitted-street"><label class="submitted-label" for="submitted-street-input">Street:</label><input id="submitted-street-input" class="submitted-input" type="text"></div>
+					<div id="submitted-city"><label class="submitted-label" for="submitted-city-input">City:</label><input id="submitted-city-input" class="submitted-input" type="text"></div>
+					<div id="submitted-state"><label class="submitted-label" for="submitted-state-input">State:</label><input id="submitted-state-input" class="submitted-input" type="text"></div>
+					<div id="submitted-zip"><label class="submitted-label" for="submitted-zip-input">Zip:</label><input id="submitted-zip-input" class="submitted-input" type="text"></div>
+					<div id="submitted-telephone"><label class="submitted-label" for="submitted-telephone-input">Telephone:</label><input id="submitted-telephone-input" class="submitted-input" type="text"></div>
+				</div>
+				<div id="transition">
+					<br>
+					<hr>
+					<input type="checkbox" id="copy-address" onclick="copy_address();">
+					<label for="copy_address">Use Same Address</label><br>
+					<hr>
+					<br>
+				</div>
+				<div id="work-at-header">
+					<span>Worked To Be Performed At</span>
+				</div>
+				<div id="work-at">
+					<div id="work-at-name"><label class="work-at-label" for="work-at-name-input">Name:</label><input id="work-at-name-input" class="work-at-input" type="text"></div>
+					<div id="work-at-street"><label class="work-at-label" for="work-at-street-input">Street:</label><input id="work-at-street-input" class="work-at-input" type="text"></div>
+					<div id="work-at-city"><label class="work-at-label" for="work-at-city-input">City:</label><input id="work-at-city-input" class="work-at-input" type="text"></div>
+					<div id="work-at-state"><label class="work-at-label" for="work-at-state-input">State:</label><input id="work-at-state-input" class="work-at-input" type="text"></div>
+					<div id="work-at-zip"><label class="work-at-label" for="work-at-zip-input">Zip:</label><input id="work-at-zip-input" class="work-at-input" type="text"></div>
+					<div id="work-at-telephone"><label class="work-at-label" for="work-at-telephone-input">Telephone:</label><input id="work-at-telephone-input" class="work-at-input" type="text"></div>
+				</div>
+				<div id="transition">
+					<br> <hr> <br>
+				</div>
+				<div id="proposal-details-header">
+					<span>Proposal Details</span>
+					<br>
+					<span id="proposal-details-sub-header">Include make and model of materials and necessary labor, and state anticipated contingencies that would materially alter the estimated completion date.</span>
+				</div>
+				<div id="proposal-details">
+					<textarea id="proposal-details-input" rows=14 cols=60 onkeydown="return limitLines(this, event);" ></textarea>
+				</div>
+				<div id="transition">
+					<br> <hr> <br>
+				</div>
+				<div id="cost-header">
+					<span>Cost</span>
+				</div>
+				<div id="cost">
+					<div id="total-cost">
+						<label class="cost-label" for="cost-input">Perform the work described above and supply all required materials for the sum of $</label>
+						<input id="cost-input" class="cost-input" type="number" oninput="updateAmounts();">
+					</div>
+				</div>
+				<div id="transition">
+					<br> <hr> <br>
+				</div>
+				<div id="payment-header">
+					<span>Payments</span>
+				</div>
+				<div id="payment">
+					<div id="payment-execution">
+						<input id="payment-execution-input" class="payment-input" type="number" style="text-align:right" oninput="updateAmounts();">
+						<label class="payment-execution-label" for="payment-execution-input">% of the cost ($ </label>
+						<input id="calculated-execution-payment-input" class="calculated-input" type="number" value="0.00" disabled>
+						<label class="payment-execution-label" for="calculated-execution-payment-input">) upon execution of this Agreement.</label>
+					</div>
+					<div id="payment-start">
+						<input id="payment-start-input" class="payment-input" type="number" style="text-align:right" oninput="updateAmounts();">
+						<label class="payment-start-label" for="payment-start-input">% of the cost ($ </label>
+						<input id="calculated-start-payment-input" class="calculated-input" type="number" value="0.00" disabled>
+						<label class="payment-start-label" for="calculated-start-payment-input">) upon the start of the work.</label>
+					</div>
+				</div>
+				<div id="transition">
+					<br> <hr> <br>
+				</div>
+				<div id="payment-header">
+					<span>Dates</span>
+				</div>
+				<div id="dates">
+					<label class="payment-start-label" for="payment-start-input">The approximate starting date is </label>
+					<input id="starting_date" type="date">
+					<label class="payment-start-label" for="payment-start-input">, and the approximate substantial completion date is </label>
+					<input id="completion_date" type="date">
+				</div>
+			</div>
+		</div>
+		<script>
+			function updateAmounts()
+			{
+				let cost = parseFloat(document.getElementById('cost-input').value) || 0;
+				let executePercent = parseFloat(document.getElementById('payment-execution-input').value) || 0;
+				let startPercent = parseFloat(document.getElementById('payment-start-input').value) || 0;
+				let calculatedExecution = document.getElementById('calculated-execution-payment-input');
+				let calculatedStart = document.getElementById('calculated-start-payment-input');
+
+				calculatedExecution.value = (cost * (executePercent / 100.0)).toFixed(2);
+				calculatedStart.value = (cost * (startPercent / 100.0)).toFixed(2);
+			}
+
+			function limitLines(obj, e)
+			{
+				let keynum, lines = obj.value.split('\n').length;
+				if(window.event) 
+				{
+					keynum = e.keyCode;
+				}
+				else if (e.which)
+				{
+					keynum = e.which;
+				}
+
+				if(keynum == 13 && lines == obj.rows)
+				{
+					return false;
+				}
+			}
+
+			function copy_address()
+			{
+				if(document.getElementById('copy-address').checked)
+				{
+					document.getElementById('work-at-name-input').value = document.getElementById('submitted-name-input').value;
+					document.getElementById('work-at-street-input').value = document.getElementById('submitted-street-input').value;
+					document.getElementById('work-at-city-input').value = document.getElementById('submitted-city-input').value;
+					document.getElementById('work-at-state-input').value = document.getElementById('submitted-state-input').value;
+					document.getElementById('work-at-zip-input').value = document.getElementById('submitted-zip-input').value;
+					document.getElementById('work-at-telephone-input').value = document.getElementById('submitted-telephone-input').value;
+				} else {
+					document.getElementById('work-at-name-input').value = '';
+					document.getElementById('work-at-street-input').value = '';
+					document.getElementById('work-at-city-input').value = '';
+					document.getElementById('work-at-state-input').value = '';
+					document.getElementById('work-at-zip-input').value = '';
+					document.getElementById('work-at-telephone-input').value = '';
+				}
+			}
+		</script>
+	</body>
+</html>
