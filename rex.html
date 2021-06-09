@@ -441,10 +441,16 @@
 					<input id="completion_date" type="date">
 				</div>
 			</div>
-<input type="file">
+<input id="thefile" type="file">
+<input type="button" onclick="alertFilename();" value="Alert">
 		</div>
 
 		<script>
+			function alertFilename()
+			{
+				var thefile = document.getElementById('thefile');
+				alert(thefile.value);
+			}
 			function updateAmounts()
 			{
 				let cost = parseFloat(document.getElementById('cost-input').value) || 0;
