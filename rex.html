@@ -16,6 +16,40 @@
 		margin: 0mm;
 	}
 
+	.cost-label {
+		display: none;
+	}
+
+	.payment-execution-label {
+		display: none;
+	}
+
+	.section-header {
+		display: none;
+	}
+
+	#ticket-date {
+		float: right;
+		margin-top: 9mm;
+	}
+
+	#ticket-number {
+		float: right;
+		margin-top: 18mm;
+	}
+
+	#save {
+		display: none;
+	}
+
+	.payment-start-label {
+		display: none;
+	}
+
+	.validity-days-label {
+		display: none;
+	}
+
 	#page-wrap
 	{
 		background: #fff;
@@ -209,6 +243,22 @@
 	#work-at-telephone-input {
 		width: 57mm;
 	}
+
+	#load {
+		display: none;
+	}
+
+	.header-label {
+		display: none;
+	}
+
+	#ticket-number-static {
+		display: none;
+	}
+
+	.submitted-input {
+		font: 12px Courier New, monospace;
+	}
 }
 
 @media screen
@@ -333,7 +383,7 @@
 		text-align: center;
 	}
 
-	#cost-header {
+	.section-header {
 		font: 16px Georgia, serif;
 		font-weight: bold;
 		color: #911;
@@ -451,7 +501,7 @@
 				<div id="transition">
 					<br> <hr> <br>
 				</div>
-				<div id="cost-header">
+				<div class="section-header">
 					<span>Cost</span>
 				</div>
 				<div id="cost">
@@ -463,7 +513,7 @@
 				<div id="transition">
 					<br> <hr> <br>
 				</div>
-				<div id="payment-header">
+				<div class="section-header">
 					<span>Payments</span>
 				</div>
 				<div id="payment">
@@ -483,7 +533,7 @@
 				<div id="transition">
 					<br> <hr> <br>
 				</div>
-				<div id="payment-header">
+				<div class="section-header">
 					<span>Dates</span>
 				</div>
 				<div id="dates">
