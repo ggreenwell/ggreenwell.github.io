@@ -150,27 +150,41 @@
 		font: 10pt Courier New, monospace;
 		font-weight: bold;
 	}
-
 }
-	.sectionDiv {
+
+	.parentDiv {
+		margin: 0;
 		text-align: center;
+		width: 100%;
+	}
+
+	.sectionDiv {
+		align: center;
+		text-align: center;
+		width: 100%;
 	}
 
 	.headerDiv {
 		text-align: left;
 		background: #eee;
-		padding-left: 10px;
 		margin-top: 10px;
 		padding-top: 5px;
 		padding-bottom: 5px;
 		font-family: -apple-system, Helvetica, sans-serif;
 		font-size: 10pt;
 		font-weight: bold;
-		width: 90%;
+		width:100%;
 	}
 
+	.headerSpan {
+		margin-left: 10px;
+	}
+		
+
 	.contentDiv {
+		padding-top: 5px;
 		text-align: center;
+		width: 100%;
 	}
 
 	.labelDiv {
@@ -178,6 +192,7 @@
 		text-align: left;
 		font-family: -apple-system, Helvetica, sans-serif;
 		font-size: 13pt;
+		width: 90%;
 	}
 
 	.textInputDiv {
@@ -189,19 +204,17 @@
 	.numberInputDiv {
 		margin-left: 10px;
 		text-align: left;
-		width: 90%;
 	}
 
 	.telInputDiv {
 		margin-left: 10px;
 		text-align: left;
-		width: 90%;
 	}
 
 	.textInput {
 		font-family: -apple-system, Helvetica, sans-serif;
 		font-size: 13pt;
-		width: 90%;
+		width: 100%;
 	}
 
 	.numberInput {
@@ -214,6 +227,26 @@
 		font-family: -apple-system, Helvetica, sans-serif;
 		font-size: 13pt;
 		width: 90%;
+	}
+
+	#submitHeaderId {
+		color: #fff;
+		background: #faa;
+	}
+
+	#workAtHeaderId {
+		color: #fff;
+		background: #aaf;
+	}
+
+	#submitContentId {
+		background: #fee;
+		padding-bottom: 10px;
+	}
+
+	#workAtContentId {
+		background: #eef;
+		padding-bottom: 10px;
 	}
 
 	/* Chrome, Safari, Edge, Opera */
@@ -231,10 +264,10 @@
 </style>
 </head>
 <body>
-<div id="testIdParent" class="testClassParent">
+<div id="parentId" class="parentDiv">
 	<div id="submitId" class="sectionDiv">
 		<div id="submitHeaderId" class="headerDiv">
-			Proposal Submitted To
+			<span class="headerSpan">Proposal Submitted To</span>
 		</div>
 		<div id="submitContentId" class="contentDiv">
 			<div id="submitNameLabelId" class="labelDiv">
@@ -277,7 +310,7 @@
 	</div>
 	<div id="workAtId" class="sectionDiv">
 		<div id="workAtHeaderId" class="headerDiv">
-			Work To Be Performed At
+			<span class="headerSpan">Work To Be Performed At</span>
 		</div>
 		<div id="workAtContentId" class="contentDiv">
 			<div id="workAtNameLabelId" class="labelDiv">
